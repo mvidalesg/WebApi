@@ -1,12 +1,14 @@
-﻿using ShoppingApi.DAL.Entities;
+﻿using Microsoft .AspNetCore.SignalR;
+using ShoppingApi.DAL.Entities;
 
 namespace ShoppingApi.Domain.Interfaces
 {
     public interface ICountryService
     {
-        Task<IEnumerable<Country>> GetCountriesAsync(); // una de las tantas firmas de un metodo 
+        // una de las tantas firmas de un metodo 
+        Task<IEnumerable<Country>> GetCountriesAsync();
+        Task<Country> GetCountryByIdAsync(Guid id);
         Task<Country> CreateCountryAsync(Country country);
-        Task<Country> GetCountryById(Guid id);
         Task<Country> EditCountryAsync(Country country);
         Task<Country> DeleteCountryAsync(Guid id);
 
