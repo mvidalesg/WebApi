@@ -39,6 +39,7 @@ namespace ShoppingApi.Domain.Services
                 return country;
             }
             catch (DbUpdateException dbUpdateException)
+
             {
                 throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
