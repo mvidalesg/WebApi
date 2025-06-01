@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoppingApi.DAL.Entities;
+using WebApi.DAL.Entities;
 
 namespace ShoppingApi.DAL
 {
@@ -16,9 +17,13 @@ namespace ShoppingApi.DAL
             
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique(); // aqui creo un indice del campo Name de la tabla Country
+            modelBuilder.Entity<State>().HasIndex("Name", "CountryId").IsUnique(); // Haciendo un indice compuesto
         }
+
         #region DbSets
-        public DbSet<Country> Countries { get; set; } // esta sera la tabla de paises
+
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<State> States { get; set; }
 
         #endregion
     }
